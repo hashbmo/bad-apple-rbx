@@ -10,4 +10,4 @@ HOST = "0.0.0.0"
 def home():
     return "<p>Hello<p>"
 
-app.run(host=HOST,port=PORT)
+app.run()
