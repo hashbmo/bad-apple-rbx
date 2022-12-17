@@ -3,7 +3,7 @@
 ### Getting setup
 
 - Load server.py into your IDE of choice
-- If you have the appropriate modules preinstalled, skip to the next step, otherwise create a new virtual environment and install and the required modules using pip
+- If you have the appropriate modules/libraries preinstalled, skip to the next step, otherwise create a new virtual environment and install and the required modules/libraries using pip
 - Run server.py [console should output: "server running"] if everything is working correctly
 - Open roblox game file and click play
 
