@@ -4,6 +4,18 @@ from waitress import serve
 
 app = Flask(__name__)
 
+def encode(arr):
+    encoded = []
+    cur, count = None, 0
+    for x in arr:
+        if cur != x:
+            if cur != None: encoded.append((cur,count))
+            cur, count = x, 1
+        else:
+            count += 1
+    encoded.append((cur,count))
+    return encoded
+
 def validate_args(args, dict):
     for key in dict:
         val = args.get(key)
@@ -11,40 +23,46 @@ def validate_args(args, dict):
             return False
     return True
 
+def get_frame(cap,size):
+    ret, frame = cap.read()
+    if not ret: return False
+    img_data = cv2.resize(frame,size).tolist()
+    serialised = []
+    for row in img_data:
+        for x in row: serialised.append(x[0])
+    return serialised
+
 @app.route("/frame",methods=["GET"])
 def send_vid_data():
-    pos = 1
-    if request.args and validate_args(request.args,{"pos":"isdigit"}): 
+    pos, size = 1, (32,32)
+    if request.args and validate_args(request.args,{"pos":"isdigit","w":"isdigit","h":"isdigit"}): 
         pos = int(request.args.get('pos'))
+        size = abs(int(request.args['w'])),abs(int(request.args['h']))
+
     cap = cv2.VideoCapture('badapple.mp4')
     cap.set(1,pos)
-    ret, frame = cap.read()
-    if not ret: return "Failed"
-    cap.release()
-
-    img_data = cv2.resize(frame,(32,32)).tolist()
+    serialized = get_frame(cap,size)
     data = {
         "size" : [32,32],
-        "frame" : img_data,
+        "frame" : serialized,
     }
     return json.dumps(data)
 
-@app.route("/all",methods=["GET"])
-def send_all():
-    size = (32, 32)
+@app.route('/all',methods=["GET"])
+def send_all_v2():
+    size = (32,32)
     if request.args and validate_args(request.args, {"w":"isdigit","h":"isdigit"}):
         size = abs(int(request.args['w'])),abs(int(request.args['h']))
+    start = time.time()
     cap = cv2.VideoCapture('badapple.mp4')
     data, video = {"size" : size}, []
     while True:
-        ret, frame = cap.read()
-        if not ret: break
-        img_data = cv2.resize(frame,size).tolist()
-        for i, row in enumerate(img_data):
-            img_data[i] = list(map(lambda x : x[0], row))
-        video.append(img_data)
+        serialised = get_frame(cap,size)
+        if not serialised: break
+        video.append(encode(serialised))
     cap.release()
     data['video'] = video
+    print(time.time() - start)
     return Response(json.dumps(data), mimetype="application/json")
 
 if __name__ == "__main__":
