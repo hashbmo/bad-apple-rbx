@@ -2,6 +2,7 @@
 
 ### Getting setup
 
+- Required libraries / modules: opencv [cv2], waitres, flask
 - Load server.py into your IDE of choice
 - If you have the appropriate modules/libraries preinstalled, skip to the next step, otherwise create a new virtual environment and install and the required modules/libraries using pip
 - Ensure that the bad apple video is in the same folder as server.py (and correctly named)
@@ -10,8 +11,8 @@
 
 ### Notes
 
-- Python code serves video data by converting each frame into a lightly compressed 2D array, serially adding it to a larger array and then JSON encoding the entire thing
-- As you might expect, this requires a large amount of ram, the magnitude of which only increases with video resolution
-- Although this can likely be heavily rectified by further compressing the data with an algorithm such as RLE (a route that I did ultimately explore on the server side), laziness won over and having a lag spike before the video starts rendering is preferrable to optimizing and debugging an RLE decoder in-game
-- If you tamper with the code and make the resolution too large, it will likely crash roblox due to the way it loads the video data
-- Like my previous project, this only works locally but I'm considering making it web based
+- Python code serves video data by converting each frame into an RLE compressed serialized array and then subsequently adding the array to larger one to create the video.
+- This is slightly more efficient than the way it was previously written, however there are still some optimisations that can be made (which I may implement in the future).
+- As expected, this can use a decent amount of memory, the magnitude of which only increases with video resolution.
+- You can play around with the files as you wish, however be warned that there's a good chance your game will crash if you set the request resolution too high.
+- Have fun! :)
