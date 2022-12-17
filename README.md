@@ -11,7 +11,7 @@
 
 ### Notes
 
-- Python code serves video data by converting each frame into an RLE compressed serialized array and then subsequently adding the array to larger one to create the video.
+- Python code serves video data by converting each frame into an RLE compressed serialized array and then subsequently appending the array to a parent one to sequentially create the video.
 - This is slightly more efficient than the way it was previously written, however there are still some optimisations that can be made (which I may implement in the future).
 - As expected, this can use a decent amount of memory, the magnitude of which only increases with video resolution.
 - You can play around with the files as you wish, however be warned that there's a good chance your game will crash if you set the request resolution too high.
