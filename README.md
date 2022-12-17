@@ -1,5 +1,8 @@
 # bad apple rbx
 
+### Impotant:
+- An improved implementation is available here: https://github.com/hashbmo/bad-apple-txt
+
 ### Getting setup
 
 - **Required libraries / modules: opencv-python [cv2], waitress, flask**
