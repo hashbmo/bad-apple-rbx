@@ -17,4 +17,12 @@
 - You can play around with the files as you wish, however be warned that there's a good chance your game will crash if you set the request resolution too high.
 - Have fun! :)
 
+### RLE Encoding Optimisation Notes
+
+- Forgot to add this originally but I will now because I think it's pretty cool
+- For a [48,36] resolution video, character length of JSON data without RLE encoding is: 44898854
+- With RLE encoding: 17204979
+- Resulting in: 27693875 characters saved
+- Percentage reduction: 61.7% !!!
+
 [Video Demonstration](https://www.youtube.com/watch?v=loY_9MptVA0)
