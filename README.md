@@ -2,7 +2,7 @@
 
 ### Getting setup
 
-- Required libraries / modules: opencv [cv2], waitres, flask
+- **Required libraries / modules: opencv [cv2], waitres, flask**
 - Load server.py into your IDE of choice
 - If you have the appropriate modules/libraries preinstalled, skip to the next step, otherwise create a new virtual environment and install and the required modules/libraries using pip
 - Ensure that the bad apple video is in the same folder as server.py (and correctly named)
@@ -17,4 +17,4 @@
 - You can play around with the files as you wish, however be warned that there's a good chance your game will crash if you set the request resolution too high.
 - Have fun! :)
 
-[demo](https://www.youtube.com/watch?v=loY_9MptVA0)
+[Video Demonstration](https://www.youtube.com/watch?v=loY_9MptVA0)
