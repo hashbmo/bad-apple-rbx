@@ -4,7 +4,7 @@
 
 - **Required libraries / modules: opencv-python [cv2], waitress, flask**
 - Load server.py into your IDE of choice
-- If you have the appropriate modules/libraries preinstalled, skip to the next step, otherwise create a new virtual environment and install and the required modules/libraries using pip. Make sure that the folder you're working with isn't nested (inside another folder)
+- If you have the appropriate modules/libraries preinstalled, skip to the next step, otherwise create a new virtual environment and install the required modules/libraries using pip. Make sure that the folder you're working with isn't nested (inside another folder)
 - Ensure that the bad apple video is in the same folder as server.py (and correctly named)
 - Run server.py [console should output: "server running"] if everything is working correctly
 - Open roblox game file and click play
