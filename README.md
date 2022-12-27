@@ -26,6 +26,6 @@
 - For a [48,36] resolution video, character length of JSON data without RLE encoding is: 44898854
 - With RLE encoding: 17204979
 - Resulting in: 27693875 characters saved
-- Percentage reduction: 61.7% !!!
+- Percentage reduction: 61.7%
 
 [Video Demonstration](https://www.youtube.com/watch?v=loY_9MptVA0)
